@@ -1,0 +1,392 @@
+ גרסה של הקוד שמציג 4,000 הבניינים הגבוהים בעולם בטבלת HTML:
+
+import java.net.*;
+import java.io.*;
+import org.json.*;
+
+public class Buildings4000 {
+
+    public static void main(String[] args) {
+        
+        try {
+            // Set up API request
+            URL url = new URL("https://your-api-endpoint.com/tallest-buildings");
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+            con.setRequestProperty("User-Agent", "Mozilla/5.0");
+            
+            // Read API response
+            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+            
+            // Parse JSON response
+            JSONArray buildings = new JSONArray(response.toString());
+            
+            // Generate HTML table
+            StringBuilder html = new StringBuilder();
+            html.append("<html><head><title>Tallest Buildings</title></head><body>");
+            html.append("<table>");
+            html.append("<tr><th>Name</th><th>City</th><th>Height (m)</th><th>Year</th><th>Mass (kg)</th><th>Visitors</th></tr>");
+            for (int i = 0; i < buildings.length(); i++) {
+                JSONObject building = buildings.getJSONObject(i);
+                String name = building.getString("name");
+                String city = building.getString("city");
+                int height = building.getInt("height");
+                int year = building.getInt("year");
+                double mass = building.getDouble("mass");
+                int visitors = building.getInt("visitors");
+                html.append("<tr><td>").append(name).append("</td><td>").append(city).append("</td><td>").append(height).append("</td><td>").append(year).append("</td><td>").append(mass).append("</td><td>").append(visitors).append("</td></tr>");
+            }
+            html.append("</table>");
+            html.append("</body></html>");
+            
+            // Print HTML to console
+            System.out.println(html.toString());
+            
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
+
+
+בגרסה המעודכנת הזו, אנו מניחים שנקודת הקצה של ה-API מחזירה מערך JSON של אובייקטים, כאשר כל אובייקט מייצג בניין ויש לו את המאפיינים הבאים:
+
+- "שם": שם הבניין
+- "עיר": העיר בה נמצא הבניין
+- "גובה": גובה הבניין במטרים
+- "שנה": השנה שבה נבנה הבניין
+- "מסה": מסת הבניין בקילוגרמים
+- "מבקרים": מספר האנשים שהיו אי פעם בבניין
+
+התוכנית שולחת בקשת GET לנקודת הקצה של ה-API, קוראת את התגובה ומנתחת אותה כמערך JSON. לאחר מכן הוא חוזר על המערך, מחלץ את המאפיינים הרלוונטיים מכל אובייקט, ומייצר טבלת HTML. לאחר מכן ה-HTML מודפס למסוף. אתה יכול להעתיק ולהדביק HTML זה בקובץ HTML כדי להציג את הטבלה באתר.
+
+שבץ תת קוד זה תחת מחלקת על גדולה יותר בשם hallo olam
+
+בטח, הנה גרסה מעודכנת של הקוד עם המחלקה Buildings4000 כתת-מחלקה של מחלקת-על גדולה יותר בשם HalloOlam:
+
+import java.net.*;
+import java.io.*;
+import org.json.*;
+
+public class HalloOlam {
+
+    public static void main(String[] args) {
+        Buildings4000 buildings = new Buildings4000();
+        buildings.displayTable();
+    }
+}
+
+class Buildings4000 {
+
+    public void displayTable() {
+        try {
+            // Set up API request
+            URL url = new URL("https://your-api-endpoint.com/tallest-buildings");
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+            con.setRequestProperty("User-Agent", "Mozilla/5.0");
+            
+            // Read API response
+            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+            
+            // Parse JSON response
+            JSONArray buildings = new JSONArray(response.toString());
+            
+            // Generate HTML table
+            StringBuilder html = new StringBuilder();
+            html.append("<html><head><title>Tallest Buildings</title></head><body>");
+            html.append("<table>");
+            html.append("<tr><th>Name</th><th>City</th><th>Height (m)</th><th>Year</th><th>Mass (kg)</th><th>Visitors</th></tr>");
+            for (int i = 0; i < buildings.length(); i++) {
+                JSONObject building = buildings.getJSONObject(i);
+                String name = building.getString("name");
+                String city = building.getString("city");
+                int height = building.getInt("height");
+                int year = building.getInt("year");
+                double mass = building.getDouble("mass");
+                int visitors = building.getInt("visitors");
+                html.append("<tr><td>").append(name).append("</td><td>").append(city).append("</td><td>").append(height).append("</td><td>").append(year).append("</td><td>").append(mass).append("</td><td>").append(visitors).append("</td></tr>");
+            }
+            html.append("</table>");
+            html.append("</body></html>");
+            
+            // Print HTML to console
+            System.out.println(html.toString());
+            
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
+
+
+בגרסה המעודכנת הזו, אנו מגדירים מחלקה על בשם HalloOlam עם מתודה main שיוצרת מופע של המחלקה Buildings4000 וקוראת לשיטת הdisplayTable שלה. המחלקה Buildings4000 מוגדרת כתת-מחלקה של HalloOlam ומכילה את הקוד לשליחת בקשת GET לנקודת הקצה של ה-API, קריאת התגובה, ניתוחה כמערך JSON ויצירת טבלת HTML. השיטה displayTable נקראת מהשיטה main של מחלקת העל HalloOlam.
+
+
+כן, אפשר להציג כל בניין בין 4,000 המבנים כאובייקט. הנה גרסה מעודכנת של הקוד המאחזרת את תגובת ה-JSON מנקודת הקצה של ה-API ומנתחת אותה למערך של אובייקטים Building:
+
+import java.net.*;
+import java.io.*;
+import org.json.*;
+
+public class HalloOlam {
+
+    public static void main(String[] args) {
+        Buildings4000 buildings = new Buildings4000();
+        Building[] buildingArray = buildings.getBuildingArray();
+        for (Building building : buildingArray) {
+            System.out.println(building.toString());
+        }
+    }
+}
+
+class Buildings4000 {
+
+    public Building[] getBuildingArray() {
+        try {
+            // Set up API request
+            URL url = new URL("https://your-api-endpoint.com/tallest-buildings");
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+            con.setRequestProperty("User-Agent", "Mozilla/5.0");
+            
+            // Read API response
+            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+            
+            // Parse JSON response
+            JSONArray buildings = new JSONArray(response.toString());
+            Building[] buildingArray = new Building[buildings.length()];
+            for (int i = 0; i < buildings.length(); i++) {
+                JSONObject building = buildings.getJSONObject(i);
+                String name = building.getString("name");
+                String city = building.getString("city");
+                int height = building.getInt("height");
+                int year = building.getInt("year");
+                double mass = building.getDouble("mass");
+                int visitors = building.getInt("visitors");
+                buildingArray[i] = new Building(name, city, height, year, mass, visitors);
+            }
+            return buildingArray;
+            
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            return null;
+        }
+    }
+}
+
+class Building {
+
+    private String name;
+    private String city;
+    private int height;
+    private int year;
+    private double mass;
+    private int visitors;
+
+    public Building(String name, String city, int height, int year, double mass, int visitors) {
+        this.name = name;
+        this.city = city;
+        this.height = height;
+        this.year = year;
+        this.mass = mass;
+        this.visitors = visitors;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public double getMass() {
+        return mass;
+    }
+
+    public int getVisitors() {
+        return visitors;
+    }
+
+    public String toString() {
+        return "Name: " + name + ", City: " + city + ", Height: " + height + "m, Year: " + year + ", Mass: " + mass + "kg, Visitors: " + visitors;
+    }
+}
+
+
+בגרסה המעודכנת הזו, אנו מגדירים מחלקה Building המייצגת בניין בודד עם המאפיינים הבאים:
+
+- name: שם הבניין
+- city: העיר בה נמצא הבניין
+- height: גובה הבניין במטרים
+- year: השנה בה נבנה הבניין
+- mass: מסת הבניין בקילוגרמים
+- visitors: מספר האנשים שהיו אי פעם בבניין
+
+אנו גם מעדכנים את המחלקה Buildings4000 כדי לנתח את תגובת ה-JSON למערך של אובייקטים Building. השיטה getBuildingArray שולחת בקשת GET לנקודת הקצה של ה-API, קוראת את התגובה, מנתחת אותה כמערך JSON, ויוצרת מערך של אובייקטים Building על ידי איטרציה על מערך JSON וחילוץ המאפיינים הרלוונטיים מכל אובייקט .
+
+לבסוף, מחלקת העל HalloOlam יוצרת מופע של המחלקה Buildings4000 וקוראת לשיטת getBuildingArray שלה כדי לאחזר את מערך האובייקטים Building. לאחר מכן הוא חוזר על המערך ומדפיס כל אובייקט Building למסוף באמצעות שיטת הtoString שלו.
+
+
+ הוסף הפעם את המאפיינים, שטח כולל במטר רבוע, עלות הבנייה בדולר/ביטקוין
+, הנה גרסה מעודכנת של המחלקה Building הכוללת את המאפיינים החדשים של שטח כולל במ"ר ועלות בנייה בדולר/ביטקוין:
+
+class Building {
+
+    private String name;
+    private String city;
+    private int height;
+    private int year;
+    private double mass;
+    private int visitors;
+    private double totalArea;
+    private double constructionCost;
+
+    public Building(String name, String city, int height, int year, double mass, int visitors, double totalArea, double constructionCost) {
+        this.name = name;
+        this.city = city;
+        this.height = height;
+        this.year = year;
+        this.mass = mass;
+        this.visitors = visitors;
+        this.totalArea = totalArea;
+        this.constructionCost = constructionCost;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public double getMass() {
+        return mass;
+    }
+
+    public int getVisitors() {
+        return visitors;
+    }
+
+    public double getTotalArea() {
+        return totalArea;
+    }
+
+    public double getConstructionCost() {
+        return constructionCost;
+    }
+
+    public String toString() {
+        return "Name: " + name + ", City: " + city + ", Height: " + height + "m, Year: " + year + ", Mass: " + mass + "kg, Visitors: " + visitors + ", Total Area: " + totalArea + "m², Construction Cost: " + constructionCost + " USD/BTC";
+    }
+}
+
+
+בגרסה המעודכנת הזו, אנו מוסיפים שני מאפיינים חדשים למחלקה Building:
+
+- totalArea: השטח הכולל של הבניין במטרים רבועים
+- constructionCost: עלות הבנייה של הבניין ב-USD/BTC
+
+אנו גם מעדכנים את הבנאי Building כדי לכלול את שני המאפיינים החדשים הללו, ומעדכנים את השיטה toString כדי לכלול אותם במחרוזת הפלט.
+תוכנית html מקושרת עבור תוכנת buildings4000
+
+בטח, הנה דוגמה לתוכנת HTML מקושרת שמציגה את רשימת הבניינים שאוחזרו מתוכנת Buildings4000:
+
+html
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Buildings4000 List</title>
+ <style>
+  table, th, td {
+   border: 1px solid black;
+   border-collapse: collapse;
+   padding: 5px;
+  }
+ </style>
+</head>
+<body>
+ <h1>Buildings4000 List</h1>
+ <table>
+  <thead>
+   <tr>
+    <th>Name</th>
+    <th>City</th>
+    <th>Height (m)</th>
+    <th>Year</th>
+    <th>Mass (kg)</th>
+    <th>Visitors</th>
+    <th>Total Area (m²)</th>
+    <th>Construction Cost (USD/BTC)</th>
+   </tr>
+  </thead>
+  <tbody>
+   <!-- Java code to retrieve building data -->
+   <%
+    Buildings4000 buildings = new Buildings4000();
+    Building[] buildingArray = buildings.getBuildingArray();
+    for (Building building : buildingArray) {
+   %>
+   <tr>
+    <td><%= building.getName() %></td>
+    <td><%= building.getCity() %></td>
+    <td><%= building.getHeight() %></td>
+    <td><%= building.getYear() %></td>
+    <td><%= building.getMass() %></td>
+    <td><%= building.getVisitors() %></td>
+    <td><%= building.getTotalArea() %></td>
+    <td><%= building.getConstructionCost() %></td>
+   </tr>
+   <%
+    }
+   %>
+  </tbody>
+ </table>
+</body>
+</html>
+
+
+תוכנית זו כוללת את התכונות הבאות:
+
+- כותרת וכותרת לדף
+- טבלה להצגת רשימת המבנים, עם עמודות לכל נכס
+- קוד Java מוטבע כדי לאחזר את נתוני הבניין ולאכלס את שורות הטבלה עם ערכי המאפיינים
+
+שימו לב שתוכנית זו מניחה שהמחלקה Building ומחלקה Buildings4000 כבר הוגדרו והן זמינות לתוכנית. בנוסף, התוכנית תצטרך להיות מופעלת על שרת שיכול להפעיל קוד Java (כגון מיכל Java servlet כמו Tomcat) כדי שקוד ה-Java המוטבע יעובד.
+
